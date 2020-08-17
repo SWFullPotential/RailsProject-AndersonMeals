@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to 'static#home'
+  root to: 'static#home'
   resources :days
   resources :meals
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
