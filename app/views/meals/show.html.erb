@@ -1,2 +1,5 @@
 <%= @meal.day_name %> <br>
 <%= @meal.meal_time %> <br>
+<%= link_to @meal.dish.dish_name, edit_dish_path(@meal.id) %> <br>
+        <%= link_to "Add Dish", new_dish_path %>
+
