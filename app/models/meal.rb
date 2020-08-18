@@ -1,7 +1,7 @@
 class Meal < ApplicationRecord
     belongs_to :user 
-    belongs_to :day
+    belongs_to :meal
 
-    validates_presence_of :mealtime
-
+    validates_presence_of :day_name, :meal_time
+    validates_uniqueness_of [:day_name && :meal_time]
 end

@@ -3,5 +3,12 @@
 <th>Day</th>
 <th>Meal</th>
 <th>Family</th>
+</tr>
+<% @meals.each do |m| %>
+<tr>
+    <td><%= m.day_name %></td>
+    <td><%= m.meal_time %></td>
 
 </tr>
+<% end %>
+
