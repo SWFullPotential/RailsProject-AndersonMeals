@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2020_08_17_210215) do
 
   create_table "days", force: :cascade do |t|
-    t.string "day"
+    t.string "dayname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "meals", force: :cascade do |t|
-    t.string "meal"
+    t.string "mealtime"
     t.integer "user_id"
     t.integer "day_id"
     t.datetime "created_at", precision: 6, null: false
