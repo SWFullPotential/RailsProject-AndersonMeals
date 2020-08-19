@@ -1,0 +1,7 @@
+<%= @dish.dish_name %> 
+<% unless @dish %>
+<%= link_to "Add Dish", new_dish_path %>
+<% else %>
+<%= link_to "Edit", edit_dish_path(@dish.id) %>
+<% end %>
+<%= link_to "Delete", dish_path(@dish), method: "delete" %>

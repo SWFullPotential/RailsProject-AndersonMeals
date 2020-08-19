@@ -1,5 +1,5 @@
 class MealsController < ApplicationController
-    before_action :set_meal, only: [:show, :edit, :update]
+    before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
     def index 
         @meals = Meal.all
@@ -28,6 +28,9 @@ class MealsController < ApplicationController
         redirect_to meal_path(@meal)
     end
     def destroy 
+        @meal.destroy
+        redirect_to meals_path
+
     end
 
     private 

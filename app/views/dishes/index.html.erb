@@ -1,0 +1,9 @@
+<h1>All My Dishes</h1>
+
+<% @dishes.each do |dish| %>
+<%= @meal.day_name %>
+<%= @meal.meal_time %>
+<%= link_to dish.dish_name, dish_path(dish) %> 
+
+<%= link_to "Delete Dish", dish_path(dish), method: "delete" %><br>
+<% end %>

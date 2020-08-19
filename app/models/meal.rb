@@ -6,8 +6,9 @@ class Meal < ApplicationRecord
     validates_presence_of :day_name, :meal_time
 
 
-
-    # if Meal.find_by(day_name: self.day_name, meal_time: self.meal_time) 
+    # def unique_day
+    #  if Meal.find_by(day_name: self.day_name, meal_time: self.meal_time) 
+    # end
 
 
     # def dish_attributes=(dish_attributes)

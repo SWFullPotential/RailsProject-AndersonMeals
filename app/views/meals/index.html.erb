@@ -3,7 +3,7 @@
 <th>Day</th>
 <th>Meal</th>
 <th>Dish</th>
-<th>View</th>
+<th>View Your Meal</th>
 
 </tr>
 <% @meals.each do |m| %>
@@ -13,10 +13,11 @@
     <td><%= m.day_name %></td>
     <td><%= m.meal_time %></td>
     <td><%= m.display_dish %></td>
-    
-    <td><%= link_to "View", meal_path(m.id) %></td>
-
+    <% if current_user.id == m.user_id %>
+        <td><%= link_to "View", meal_path(m.id) %></td>
 </tr>
-<% end %>
-
+    <% end %>
 </table>
+<% end %>
+<br>
+<%= link_to "All My Dishes", dishes_path %> <br>
