@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
     <title>AndersonMealSignup</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-      <nav>
+    <head><script src="https://kit.fontawesome.com/4b2e9dc0b4.js" crossorigin="anonymous"></script></head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+  <body class="w3-black">
+      <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
       <ul>
-        <li><%= link_to "Home", root_path %></li>
+        <li class="w3-bar-item w3-button w3-padding-large w3-black"><%= link_to "Home", root_path%><i class="fa fa-home w3-xxlarge"></i></li>
         <% if user_signed_in? %>
-          <li><%= link_to "Meals", meals_path %></li>
-          <li><%= link_to "Sign-up for meal", new_meal_path %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-utensils w3-xxlarge"></i><%= link_to "Meals", meals_path %></li>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-plus-circle w3-xxlarge"></i><%= link_to "Add meal", new_meal_path %></li>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-sign-out-alt w3-xxlarge"></i><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
         <% else %>
-          <li><%= link_to "Login", new_user_session_path %></li>
-          <li><%= link_to "Signup", new_user_registration_path %></li>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-sign-in-alt w3-xxlarge"></i><%= link_to "Login", new_user_session_path %></li>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-user-plus w3-xxlarge"></i><%= link_to "Signup", new_user_registration_path %></li>
         <% end %>
       </ul>
     </nav>
+<div class="w3-padding-large" id="main">
 
     <%= yield %>
+</div>
   </body>
 </html>
