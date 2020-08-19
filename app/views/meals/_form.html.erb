@@ -4,8 +4,7 @@
 
     <%= f.label :meal_time %>: 
     <%= f.text_field :meal_time, placeholder: "Breakfast" %><br>
-
-        <%= f.fields_for :dish, Dish.new do |dish_fields| %>
+        <%= f.fields_for :dish, @dish do |dish_fields| %>
             <%= dish_fields.label :dish_name, "Dish Name" %>
             <%= dish_fields.text_field :dish_name, placeholder: "Pizza" %>
          <% end %>

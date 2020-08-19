@@ -6,10 +6,10 @@ class MealsController < ApplicationController
     end
     def new 
         @meal = Meal.new 
+        @dish = @meal.build_dish
     end
     def create 
     # binding.pry
-        
         @meal = current_user.meals.build(meal_params)
 
         if @meal.save 

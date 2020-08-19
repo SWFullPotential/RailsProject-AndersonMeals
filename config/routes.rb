@@ -9,6 +9,5 @@ Rails.application.routes.draw do
   post 'meals/:meal_id/dishes' => 'dishes#create'
 
 
-  # post '/users/:id' => 'users#show_post_ride'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

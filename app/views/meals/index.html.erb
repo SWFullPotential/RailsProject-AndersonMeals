@@ -3,8 +3,6 @@
 <th>Day</th>
 <th>Meal</th>
 <th>Dish</th>
-<th>Edit</th>
-<th>Delete</th>
 <th>View</th>
 
 </tr>
@@ -14,9 +12,8 @@
     <% m.id %>
     <td><%= m.day_name %></td>
     <td><%= m.meal_time %></td>
-    <td><%= m.dish.dish_name %></td>
-    <td><%= link_to "Edit", edit_meal_path(m.id) %></td>
-    <td><%= link_to "Delete", meal_path(m.id), method: "delete" %></td>
+    <td><%= m.display_dish %></td>
+    
     <td><%= link_to "View", meal_path(m.id) %></td>
 
 </tr>

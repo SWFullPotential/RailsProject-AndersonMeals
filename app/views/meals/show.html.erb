@@ -1,5 +1,7 @@
-<%= @meal.day_name %> <br>
-<%= @meal.meal_time %> <br>
-<%= link_to @meal.dish.dish_name, edit_dish_path(@meal.id) %> <br>
-        <%= link_to "Add Dish", new_meal_dish_path(@meal.id) %>
+Edit Entire Entry: <%= link_to @meal.day_name, edit_meal_path(@meal.id) %> <%= link_to @meal.meal_time, edit_meal_path(@meal.id) %><br>
 
+<% if @meal.dish %>
+Edit Dish: <%= link_to @meal.dish.dish_name, edit_dish_path(@meal.id) %> <br>
+<% else %>
+        <%= link_to "Add Dish", new_meal_dish_path(@meal.id) %>
+<% end %>
