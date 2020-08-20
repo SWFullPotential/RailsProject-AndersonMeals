@@ -4,7 +4,6 @@
 <th>Meal</th>
 <th>Dish</th>
 <th>View Your Meal</th>
-
 </tr>
 <% @meals.each do |m| %>
 <tr>
@@ -15,9 +14,9 @@
     <td><%= m.display_dish %></td>
     <% if current_user.id == m.user_id %>
         <td><%= link_to "View", meal_path(m.id) %></td>
-</tr>
     <% end %>
-</table>
+</tr>
 <% end %>
+</table>
 <br>
 <%= link_to "All My Dishes", dishes_path %> <br>
