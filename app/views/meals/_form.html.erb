@@ -1,12 +1,24 @@
 <%= form_for @meal do |f| %>
     <%= f.label :day_name %>: 
-    <%= f.text_field :day_name, placeholder: "Sunday" %><br>
+    <%= f.text_field :day_name, list: "day_name_autocomplete", placeholder: "Sunday" %>
+        <datalist id="day_name_autocomplete">
+                    <% Meal.all.each do |meal| %>
+                        <option value="<%= meal.day_name %>">
+                    <% end %>
+                    </datalist>
+    <br>
 
     <%= f.label :meal_time %>: 
-    <%= f.text_field :meal_time, placeholder: "Breakfast" %><br>
-        <%= f.fields_for :dish, @dish do |d| %>
+  <%= f.text_field :meal_time, list: "meal_time_autocomplete", placeholder: "Breakfast" %>
+        <datalist id="meal_time_autocomplete">
+                    <% Meal.all.each do |meal| %>
+                        <option value="<%= meal.meal_time %>">
+                    <% end %>
+                    </datalist> 
+    <br>       
+    <%= f.fields_for :dish, @dish do |d| %>
         <%= d.label :dish_name %>: 
-            <%= d.text_field :dish_name, list: "dishes_autocomplete", placeholder:"Omlettes"%>
+        <%= d.text_field :dish_name, list: "dishes_autocomplete", placeholder:"Omlettes"%>
             <datalist id="dishes_autocomplete">
                 <% Dish.all.each do |dish| %>
                     <option value="<%= dish.dish_name %>">
