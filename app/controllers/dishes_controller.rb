@@ -18,6 +18,7 @@ class DishesController < ApplicationController
             # binding.pry
             redirect_to meal_dishes_path(@meal)
         else
+            flash[:error] = @dish.errors.full_messages
             render :new 
         end
     end
@@ -27,12 +28,18 @@ class DishesController < ApplicationController
         # binding.pry
     end
     def update 
-        @dish.update(dish_params)
-        redirect_to dish_path(@dish)
+        if @dish.update(dish_params)
+            redirect_to dish_path(@dish)
+        else 
+            flash[:error] = @dish.errors.full_messages
+            render :edit
+        end
     end
     def destroy 
         # @meals = @dish.meals
         @dish.destroy 
+        flash[:notice] = "Your dish has been detroyed"
+
         # binding.pry
         redirect_to meals_path
     end
