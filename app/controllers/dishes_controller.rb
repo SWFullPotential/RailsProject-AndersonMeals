@@ -1,7 +1,6 @@
 class DishesController < ApplicationController
     before_action :set_dish, only: [:show, :edit, :update, :destroy]
     def index 
-        @meal = Meal.find_by_id(params[:meal_id])
         @dishes = Dish.all
     end
     def new 
