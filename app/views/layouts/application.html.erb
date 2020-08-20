@@ -2,7 +2,11 @@
 <html>
     <title>AndersonMealSignup</title>
     <head>
-        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script src="https://kit.fontawesome.com/4b2e9dc0b4.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
