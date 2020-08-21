@@ -1,0 +1,10 @@
+<h1>Edit Dish</h1>
+
+<%= form_for @dish do |f| %>
+
+    <%= f.label :dish_name %>: 
+    <%= f.text_field :dish_name %>
+    <%= f.submit %>
+
+<% end %>
+<%= link_to "Delete", dish_path(@dish), method: "delete" %>

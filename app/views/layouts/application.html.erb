@@ -1,16 +1,84 @@
 <!DOCTYPE html>
-
 <html>
-  <head>
     <title>AndersonMealSignup</title>
+    <head>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
+    <script src="https://kit.fontawesome.com/4b2e9dc0b4.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+#meals {
+  font-family: "Montserrat", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#meals td, #meals th {
+  /* border-bottom: .5px solid #ddd; */
+  padding: 8px;
+  color: #ffffff
+}
+
+#meals {background-color: #3c3c3c;}
+
+#meals tr:hover {background-color: #787878;}
+
+#meals th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #000000;
+  color: white;
+}
+</style>
+
+  <body class="w3-black">
+      <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+      <ul>
+        <li class="w3-bar-item w3-button w3-padding-large w3-black"><%= link_to "Home", root_path%><i class="fa fa-home w3-xxlarge"></i></li>
+        <% if user_signed_in? %>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-utensils w3-xxlarge"></i><%= link_to "Meals", meals_path %></li>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-plus-circle w3-xxlarge"></i><%= link_to "Add meal", new_meal_path %></li>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-sign-out-alt w3-xxlarge"></i><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
+        <% else %>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-sign-in-alt w3-xxlarge"></i><%= link_to "Login", new_user_session_path %></li>
+          <li class="w3-bar-item w3-button w3-padding-large w3-hover-black"><i class="fas fa-user-plus w3-xxlarge"></i><%= link_to "Signup", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+<header class="w3-container w3-padding-24 w3-center w3-grey">
+<div class="w3-padding-large" id="main">
+
     <%= yield %>
+</div>
+
+    <!-- Javascripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--[if lt IE 7]>
+      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+    <![endif]-->
+    <!-- Javascripts End -->
+    <!--</div>-->
+    </header>
   </body>
 </html>

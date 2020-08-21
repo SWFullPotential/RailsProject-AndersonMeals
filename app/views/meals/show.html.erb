@@ -1,0 +1,18 @@
+<table id="meals">
+<tr>
+<th>Day</th>
+<th>Meal</th>
+<th>Dish</th>
+</tr>
+<tr>
+<td><%= link_to @meal.day_name, edit_meal_path(@meal.id) %></td> 
+<td><%= link_to @meal.meal_time, edit_meal_path(@meal.id) %></td>
+
+<% if @meal.dish %>
+<td><%= link_to @meal.dish.dish_name, edit_dish_path(@meal.dish_id) %></td>
+
+<% else %>
+        <td><%= link_to "Add Dish", new_meal_dish_path(@meal) %></td>
+<% end %>
+</tr>
+</table>

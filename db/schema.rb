@@ -10,20 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_210215) do
+ActiveRecord::Schema.define(version: 2020_08_18_181113) do
 
-  create_table "days", force: :cascade do |t|
-    t.string "day"
+  create_table "dishes", force: :cascade do |t|
+    t.string "dish_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "meals", force: :cascade do |t|
-    t.string "meal"
-    t.integer "user_id"
-    t.integer "day_id"
+    t.string "day_name"
+    t.string "meal_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "dish_id"
   end
 
   create_table "users", force: :cascade do |t|

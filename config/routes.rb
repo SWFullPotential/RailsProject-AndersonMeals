@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  resources :days
-  resources :meals
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  root to: 'static#home'
+  resources :meals do 
+    resources :dishes, only: [:index, :new, :create]
+  end
+  resources :dishes
+
+  post 'meals/:meal_id/dishes' => 'dishes#create'
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

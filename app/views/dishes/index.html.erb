@@ -1,0 +1,20 @@
+<h1>All My Dishes</h1>
+
+<table id="meals">
+<tr>
+<th>Delete Dish</th>
+<th>Dish</th>
+<th>Day</th>
+<th>Meal</th>
+
+</tr>
+<% @dishes.each do |dish| %>
+<tr>
+<td><%= link_to "Delete Dish", dish_path(dish), method: "delete" %></td>
+<td><%= link_to dish.dish_name, dish_path(dish) %></td>
+    <% dish.meals.each do |meal| %>
+        <td><%= meal.day_name %></td>
+        <td><%= meal.meal_time %></td>
+    <% end %>
+<% end %>
+</table>
