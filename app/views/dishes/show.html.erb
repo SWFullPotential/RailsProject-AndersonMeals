@@ -7,11 +7,8 @@
 
 <tr>
 <td><%= @dish.dish_name %> </td>
-<%# <% unless @dish %>
-<%# <%= link_to "Add Dish", new_dish_path %> 
-<%# <% else %> 
+
 <td><%= link_to "Edit", edit_dish_path(@dish.id) %></td>
-<%# <% end %> 
-<td><%= link_to "Delete", dish_path(@dish), method: "delete" %></td>
+
 </tr>
 </table>
