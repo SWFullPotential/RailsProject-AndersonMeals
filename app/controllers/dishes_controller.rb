@@ -39,6 +39,7 @@ class DishesController < ApplicationController
         # @meals = @dish.meals
         @dish.destroy 
         flash[:notice] = "Your dish has been detroyed"
+
         # binding.pry
         redirect_to meals_path
     end

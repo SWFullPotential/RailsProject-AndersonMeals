@@ -4,18 +4,18 @@
 
     <%= f.label :meal_time %>: 
     <%= f.text_field :meal_time, placeholder: "Breakfast" %><br>
-    <%= f.fields_for :dish, @dish do |d| %>            
-      <%= d.label :dish_name %>: 
-      <%= d.text_field :dish_name, list: "dishes_autocomplete", placeholder:"Omlettes"%>
-      <datalist id="dishes_autocomplete">
-        <% Dish.all.each do |dish| %>
-        <option value="<%= dish.dish_name %>">
-        <% end %>
-      </datalist>
 
-    <% end %>
+        <%= f.fields_for :dish, @dish do |d| %>
+        <%= d.label :dish_name %>: 
+            <%= d.text_field :dish_name, list: "dishes_autocomplete", placeholder:"Omlettes"%>
+            <datalist id="dishes_autocomplete">
+                <% Dish.all.each do |dish| %>
+                    <option value="<%= dish.dish_name %>">
+                <% end %>
+                </datalist>
+         <% end %>
+
     <br>
 
     <%= f.submit %>
-
-    <% end %>
+<% end %>
