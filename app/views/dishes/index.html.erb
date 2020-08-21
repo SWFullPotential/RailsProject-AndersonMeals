@@ -1,15 +1,27 @@
 <h1>All My Dishes</h1>
 
-<% @dishes.each do |dish| %>
-    <% binding.pry %>
-    <% if dish.owns_dish(dish) %>
+<table id="meals">
+<tr>
+<th>Delete Dish</th>
+<th>Dish</th>
+<th>Day</th>
+<th>Meal</th>
 
+</tr>
+
+<% @dishes.each do |dish| %>
+    <%# <% binding.pry %>
+    <%# <% if dish.owns_dish(dish) %>
+<tr>
+<td><%= link_to "Delete", dish_path(dish), method: "delete" %></td>
+<td><%= link_to dish.dish_name, dish_path(dish) %></td>
+  
     <% dish.meals.each do |meal| %>
-<% #meal = Meal.find_by(dish_id: dish.id) %> 
-        <%= meal.day_name %>
-        <%= meal.meal_time %>
+<%# meal = Meal.find_by(dish_id: dish.id) %> 
+        <td><%= meal.day_name %></td>
+        <td><%= meal.meal_time %></td>
     <% end %>
-<%= link_to dish.dish_name, dish_path(dish) %> 
-<%= link_to "Delete Dish", dish_path(dish), method: "delete" %><br>
+
 <% end %>
-<% end %>
+</tr>
+</table>
