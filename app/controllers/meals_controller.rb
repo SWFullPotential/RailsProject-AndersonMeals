@@ -15,6 +15,7 @@ class MealsController < ApplicationController
         if @meal.save 
             redirect_to meals_path(@meals)
         else
+            flash[:error] = @meal.errors.full_messages
             render :new 
         end
     end
@@ -24,11 +25,16 @@ class MealsController < ApplicationController
     def edit 
     end
     def update
-        @meal.update(meal_params)
-        redirect_to meal_path(@meal)
+        if @meal.update(meal_params)
+          redirect_to meal_path(@meal)
+        else 
+            flash[:error] = @meal.errors.full_messages
+            render :edit
+        end
     end
     def destroy 
         @meal.destroy
+        flash[:notice] = "Your meal has been destroyed"
         redirect_to meals_path
 
     end
