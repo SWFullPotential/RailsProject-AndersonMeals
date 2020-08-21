@@ -7,11 +7,11 @@
     Select from existing dishes:
     <%= f.collection_select :dish_name, Dish.all, :dish_name, :dish_name, include_blank: true %><br>
     Or <br>
+
     Create new dish 
     <%= f.label :dish_name %>: 
     <%= f.text_field :dish_name, placeholder:"Omlettes"%><br>
      <%= f.submit %>
-
 
 
 <% end %>
