@@ -9,8 +9,10 @@
 
 </tr>
 <% @dishes.each do |dish| %>
+    <%# <% binding.pry %>
+    <%# <% if dish.owns_dish(dish) %>
 <tr>
-<td><%= link_to "Delete Dish", dish_path(dish), method: "delete" %></td>
+<td><%= link_to "Delete", dish_path(dish), method: "delete" %></td>
 <td><%= link_to dish.dish_name, dish_path(dish) %></td>
     <% dish.meals.each do |meal| %>
         <td><%= meal.day_name %></td>

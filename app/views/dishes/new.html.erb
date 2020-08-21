@@ -1,11 +1,15 @@
-<h1>Add a dish</h1>
-
+<h1>Add a dish for <%= @meal.day_name %>, <%= @meal.meal_time %></h1>
 
 <%= form_for ([@meal, @dish]) do |f| %>
 
     <%= f.label :dish_name %>: 
-    <%= f.text_field :dish_name %>
-    <%= f.submit %>
+    <%= f.text_field :dish_name, list: "dishes_autocomplete", placeholder:"Omlettes"%>
+    <datalist id="dishes_autocomplete">
+        <% Dish.all.each do |dish| %>
+            <option value="<%= dish.dish_name %>">
+        <% end %>
+    </datalist>
+     <%= f.submit %>
 
 
 <% end %>

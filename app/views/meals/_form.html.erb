@@ -4,29 +4,18 @@
 
     <%= f.label :meal_time %>: 
     <%= f.text_field :meal_time, placeholder: "Breakfast" %><br>
-        <%= f.fields_for :dish, @dish do |dish_fields| %>
-            <%= dish_fields.label :dish_name, "Dish Name" %>
-            <%= dish_fields.text_field :dish_name, placeholder: "Pizza" %>
-         <% end %>
+    <%= f.fields_for :dish, @dish do |d| %>            
+      <%= d.label :dish_name %>: 
+      <%= d.text_field :dish_name, list: "dishes_autocomplete", placeholder:"Omlettes"%>
+      <datalist id="dishes_autocomplete">
+        <% Dish.all.each do |dish| %>
+        <option value="<%= dish.dish_name %>">
+        <% end %>
+      </datalist>
+
+    <% end %>
     <br>
 
     <%= f.submit %>
 
     <% end %>
-
-<% if @meal.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@meal.errors.count, "error") %>
-      prohibited this meal from being saved:
-    </h2>
- 
-    <ul>
-    <% @meal.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
- 
