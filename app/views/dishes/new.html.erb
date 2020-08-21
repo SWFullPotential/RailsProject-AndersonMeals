@@ -3,16 +3,17 @@
 
 <%= form_for ([@meal, @dish]) do |f| %>
 
-    <%= f.label :dish_name %>: 
 
-    <%= f.text_field :dish_name, list: "dishes_autocomplete", placeholder:"Omlettes"%>
-    <datalist id="dishes_autocomplete">
-        <% Dish.all.each do |dish| %>
-            <option value="<%= dish.dish_name %>">
-        <% end %>
-    </datalist>
+    Select from existing dishes:
+    <%= f.collection_select :dish_name, Dish.all, :dish_name, :dish_name, include_blank: true %><br>
+    Or <br>
+    Create new dish 
+    <%= f.label :dish_name %>: 
+    <%= f.text_field :dish_name, placeholder:"Omlettes"%><br>
      <%= f.submit %>
 
 
 
 <% end %>
+
+

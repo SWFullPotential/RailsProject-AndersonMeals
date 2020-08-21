@@ -4,15 +4,13 @@
 
     <%= f.label :meal_time %>: 
     <%= f.text_field :meal_time, placeholder: "Breakfast" %><br>
+        Select from existing dishes: 
+    <%= f.collection_select :dish_id, Dish.all, :id, :dish_name, include_blank: true %><br>
 
         <%= f.fields_for :dish, @dish do |d| %>
-        <%= d.label :dish_name %>: 
-            <%= d.text_field :dish_name, list: "dishes_autocomplete", placeholder:"Omlettes"%>
-            <datalist id="dishes_autocomplete">
-                <% Dish.all.each do |dish| %>
-                    <option value="<%= dish.dish_name %>">
-                <% end %>
-                </datalist>
+            Create New Dish: 
+            <%= d.text_field :dish_name, value: "" %>
+        
          <% end %>
 
     <br>

@@ -11,7 +11,10 @@ class DishesController < ApplicationController
     def create 
 
         @meal = Meal.find_by_id(params[:meal_id])
-        @dish = @meal.build_dish(dish_params)
+        # @dish = @meal.build_dish(dish_params)
+        @dish = Dish.find_or_create_by(dish_name: dish_params[:dish_name])
+            @dish.meals << @meal
+
         # binding.pry
 
         if @dish.save && @meal.save
