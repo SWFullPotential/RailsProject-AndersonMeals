@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def owns_dish?(dish)
-    current_user.dishes.include?(dish)
+    self.dishes.include?(dish)
   end
 
 end
