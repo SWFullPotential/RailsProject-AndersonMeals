@@ -1,6 +1,8 @@
 <h1>All My Dishes</h1>
 
 <% @dishes.each do |dish| %>
+    <% binding.pry %>
+    <% if dish.owns_dish(dish) %>
 
     <% dish.meals.each do |meal| %>
 <% #meal = Meal.find_by(dish_id: dish.id) %> 
@@ -8,6 +10,6 @@
         <%= meal.meal_time %>
     <% end %>
 <%= link_to dish.dish_name, dish_path(dish) %> 
-
 <%= link_to "Delete Dish", dish_path(dish), method: "delete" %><br>
+<% end %>
 <% end %>
