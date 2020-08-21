@@ -13,7 +13,7 @@
 
 <tr>
 
-<td><%= link_to dish.dish_name, dish_path(dish) %></td>
+<td><%= dish.dish_name %></td>
     <% dish.meals.each do |meal| %>
         <td><%= meal.day_name %></td>
         <td><%= meal.meal_time %></td>
