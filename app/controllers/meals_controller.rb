@@ -28,6 +28,7 @@ class MealsController < ApplicationController
     def update
         if @meal.update(meal_params)
         redirect_to meal_path(@meal)
+          
         else 
             flash[:error] = @meal.errors.full_messages
             render :edit

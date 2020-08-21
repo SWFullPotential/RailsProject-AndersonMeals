@@ -1,7 +1,17 @@
-<%= @dish.dish_name %> 
-<% unless @dish %>
-<%= link_to "Add Dish", new_dish_path %>
-<% else %>
-<%= link_to "Edit", edit_dish_path(@dish.id) %>
-<% end %>
-<%= link_to "Delete", dish_path(@dish), method: "delete" %>
+<table id="meals">
+<tr>
+<th>Dish</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+
+<tr>
+<td><%= @dish.dish_name %> </td>
+<%# <% unless @dish %>
+<%# <%= link_to "Add Dish", new_dish_path %> 
+<%# <% else %> 
+<td><%= link_to "Edit", edit_dish_path(@dish.id) %></td>
+<%# <% end %> 
+<td><%= link_to "Delete", dish_path(@dish), method: "delete" %></td>
+</tr>
+</table>
