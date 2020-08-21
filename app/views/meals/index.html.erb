@@ -1,3 +1,9 @@
+<%= form_tag(meals_path(current_user), method: "get") do %>
+  <%= text_field_tag :term, nil,  id: "Search", placeholder: "Search by day" %>
+
+  <%= submit_tag "Search"%>
+<% end %>
+
 <table>
 <tr>
 <th>Day</th>
