@@ -2,7 +2,11 @@ class MealsController < ApplicationController
     before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
     def index 
-        @meals = Meal.all
+        if params[:term]
+            @meals = Meal.search(params[:term])
+        else
+            @meals = Meal.all
+        end
     end
     def new 
         @meal = Meal.new 
