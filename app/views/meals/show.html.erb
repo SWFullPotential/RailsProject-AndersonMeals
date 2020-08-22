@@ -5,9 +5,13 @@
 <th>Dish</th>
 </tr>
 <tr>
-<td><%= link_to @meal.day_name, edit_meal_path(@meal.id) %></td> 
-<td><%= link_to @meal.meal_time, edit_meal_path(@meal.id) %></td>
-
+<% if current_user.owns_meal?(@meal) %>
+    <td><%= link_to @meal.day_name, edit_meal_path(@meal.id) %></td> 
+    <td><%= link_to @meal.meal_time, edit_meal_path(@meal.id) %></td>
+    <% else %>
+    <td><%= @meal.day_name %></td> 
+    <td><%= @meal.meal_time %></td>
+<% end %>
 
 <%= add_edit_dish(@meal) %>
 <%# can turn this if into a helper method in meals. %>

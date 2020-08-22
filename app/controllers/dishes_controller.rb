@@ -28,6 +28,10 @@ class DishesController < ApplicationController
     def show 
     end
     def edit 
+        unless current_user.owns_dish?(@dish)
+            flash[:error] = @dish.errors.full_messages
+            redirect_to meals_path
+        end
         # binding.pry
     end
     def update 
