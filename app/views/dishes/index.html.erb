@@ -13,8 +13,8 @@
 
 <tr>
 
-<td><%= dish.dish_name %></td>
     <% dish.meals.each do |meal| %>
+<td><%= meal.dish.dish_name %></td>
         <td><%= meal.day_name %></td>
         <td><%= meal.meal_time %></td>
         </tr>
