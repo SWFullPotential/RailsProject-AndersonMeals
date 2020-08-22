@@ -5,9 +5,14 @@
 
 
     Select from existing dishes:
-    <%= f.collection_select :dish_name, Dish.all, :dish_name, :dish_name, include_blank: true %><br>
+    <%= collection_select(:dish, :dish_name, Dish.all, :dish_name, :dish_name, include_blank: true) %><br>
+
+    <%= f.submit %> 
+    <% end %>
+
     Or <br>
 
+<%= form_for ([@meal, @dish]) do |f| %>
     Create new dish 
     <%= f.label :dish_name %>: 
     <%= f.text_field :dish_name, placeholder:"Omlettes"%><br>
@@ -15,5 +20,3 @@
 
 
 <% end %>
-
-

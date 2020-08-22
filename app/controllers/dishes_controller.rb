@@ -9,36 +9,29 @@ class DishesController < ApplicationController
         @dish = Dish.new 
     end
     def create 
-        unless dish_params[dish_name: ""]
-            @meal = Meal.find_by_id(params[:meal_id])
-            # @dish = @meal.build_dish(dish_params)
-            @dish = Dish.find_or_create_by(dish_name: dish_params[:dish_name])
-                @dish.meals << @meal
 
+        @meal = Meal.find_by_id(params[:meal_id])
+        # @dish = @meal.build_dish(dish_params)
+        @dish = Dish.find_or_create_by(dish_name: dish_params[:dish_name])
+            @dish.meals << @meal
+
+        # binding.pry
+
+        if @dish.save && @meal.save
             # binding.pry
-
-            if @dish.save && @meal.save
-                # binding.pry
-                redirect_to meal_dishes_path(@meal)
-            else
-                flash[:error] = @dish.errors.full_messages
-                render :new 
-            end
+            redirect_to meal_dishes_path(@meal)
         else
-            @meal = Meal.find_by_id(params[:meal_id])
-                if @meal.save 
-                    redirect_to meal_dishes_path(@meal)
-                else 
-                    flash[:error] = @dish.errors.full_messages
-                render :new 
-                end
+            flash[:error] = @dish.errors.full_messages
+            render :new 
         end
     end
     def show 
-        @meal = Meal.find_by(dish_id:params[:dish_id])
-
     end
     def edit 
+        unless current_user.owns_dish?(@dish)
+            flash[:error] = @dish.errors.full_messages
+            redirect_to meals_path
+        end
         # binding.pry
     end
     def update 
