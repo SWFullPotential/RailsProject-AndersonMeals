@@ -28,6 +28,10 @@ class MealsController < ApplicationController
         
     end
     def edit 
+        unless current_user.owns_meal?(@meal)
+            flash[:error] = @meal.errors.full_messages
+            redirect_to meals_path(@meal)
+        end
     end
     def update
         if @meal.update(meal_params)
@@ -38,6 +42,8 @@ class MealsController < ApplicationController
             render :edit
         end
     end
+
+    
     def destroy 
         # @meal.dish.destroy
         @meal.destroy
