@@ -11,23 +11,23 @@
 
 <table id="meals">
 
-<tr>
-<th>Day</th>
-<th>Meal</th>
-<th>Dish</th>
-<th>View Your Meal</th>
-</tr>
+  <tr>
+    <th>Day</th>
+    <th>Meal</th>
+    <th>Dish</th>
+    <th>View Your Meal</th>
+  </tr>
 <% @meals.each do |m| %>
-<tr>
+  <tr>
 
-    <% m.id %>
-    <td><%= m.day_name %></td>
-    <td><%= m.meal_time %></td>
-    <td><%= m.display_dish %></td>
-    <% if current_user.id == m.user_id %>
-        <td><%= link_to "View", meal_path(m.id) %></td>
-    <% end %>
-</tr>
+      <% m.id %>
+      <td><%= m.day_name %></td>
+      <td><%= m.meal_time %></td>
+      <td><%= m.display_dish %></td>
+      <% if current_user.id == m.user_id %>
+          <td><%= link_to "View", meal_path(m.id) %></td>
+      <% end %>
+  </tr>
 
 <% end %>
 </table>

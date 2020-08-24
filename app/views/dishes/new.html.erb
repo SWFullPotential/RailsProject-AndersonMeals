@@ -8,7 +8,7 @@
     <%= collection_select(:dish, :dish_name, Dish.all, :dish_name, :dish_name, include_blank: true) %><br>
 
     <%= f.submit %> 
-    <% end %>
+<% end %>
 
     Or <br>
 
@@ -17,6 +17,6 @@
     <%= f.label :dish_name %>: 
     <%= f.text_field :dish_name, placeholder:"Omlettes"%><br>
      <%= f.submit %>
-
+<%#Partial won't work here. %>
 
 <% end %>

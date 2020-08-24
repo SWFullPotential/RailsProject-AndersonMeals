@@ -1,6 +1,6 @@
 class Meal < ApplicationRecord
     belongs_to :user 
-    belongs_to :dish, optional: true
+    belongs_to :dish, optional: true 
     accepts_nested_attributes_for :dish, reject_if: :all_blank
 
     validates_presence_of :day_name, :meal_time
