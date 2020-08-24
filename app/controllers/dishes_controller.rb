@@ -1,16 +1,17 @@
 class DishesController < ApplicationController
     before_action :set_dish, only: [:show, :edit, :update, :destroy]
+    before_action :set_meal, only: [:new, :create]
     def index 
         @dishes = Dish.all
     end
     def new 
     # binding.pry
-        @meal = Meal.find_by_id(params[:meal_id])
+        # @meal = Meal.find_by_id(params[:meal_id])
         @dish = Dish.new 
     end
     def create 
 
-        @meal = Meal.find_by_id(params[:meal_id])
+        # @meal = Meal.find_by_id(params[:meal_id])
         # @dish = @meal.build_dish(dish_params)
         @dish = Dish.find_or_create_by(dish_name: dish_params[:dish_name])
             @dish.meals << @meal
@@ -58,5 +59,8 @@ class DishesController < ApplicationController
     end
     def set_dish 
         @dish = Dish.find_by(id: params[:id])
+    end
+    def set_meal 
+        @meal = Meal.find_by_id(params[:meal_id])
     end
 end
