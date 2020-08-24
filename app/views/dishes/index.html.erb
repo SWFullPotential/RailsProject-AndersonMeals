@@ -1,25 +1,21 @@
 <h1>All My Dishes</h1>
 
 <table id="meals">
-    <tr>
-        <th>Dish</th>
-        <th>Day</th>
-        <th>Meal</th>
-
-    </tr>
-<% @dishes.each do |dish| %>
-    <%# <% binding.pry %>
-    <% if current_user.owns_dish?(dish) %>
-
-         <tr>
-
-        <% dish.meals.each do |meal| %>
-            <td><%= meal.dish.dish_name %></td>
-            <td><%= meal.day_name %></td>
-            <td><%= meal.meal_time %></td>
+        <tr>
+            <th>Dish</th>
+            <th>Day</th>
+            <th>Meal</th>
         </tr>
+    <% @dishes.each do |dish| %>
+        <%# <% binding.pry %>
+        <% if current_user.owns_dish?(dish) %>
+            <tr>
+            <% dish.meals.each do |meal| %>
+                <td><%= meal.dish.dish_name %></td>
+                <td><%= meal.day_name %></td>
+                <td><%= meal.meal_time %></td>
+            </tr>
+            <% end %>
         <% end %>
     <% end %>
-<% end %>
-
 </table>

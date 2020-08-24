@@ -13,11 +13,8 @@ class MealsController < ApplicationController
         @dish = @meal.build_dish
     end
     def create 
-    # binding.pry
         @meal = current_user.meals.build(meal_params)
-
         if @meal.save 
-            
             redirect_to meals_path(@meals)
         else
             flash[:error] = @meal.errors.full_messages
@@ -25,7 +22,6 @@ class MealsController < ApplicationController
         end
     end
     def show
-        
     end
     def edit 
         unless current_user.owns_meal?(@meal)
@@ -36,20 +32,16 @@ class MealsController < ApplicationController
     def update
         if @meal.update(meal_params)
         redirect_to meal_path(@meal)
-          
         else 
             flash[:error] = @meal.errors.full_messages
             render :edit
         end
-    end
-
-    
+    end    
     def destroy 
         # @meal.dish.destroy
         @meal.destroy
         flash[:notice] = "Your meal has been destroyed"
         redirect_to meals_path
-
     end
 
     private 

@@ -5,21 +5,12 @@ class DishesController < ApplicationController
         @dishes = Dish.all
     end
     def new 
-    # binding.pry
-        # @meal = Meal.find_by_id(params[:meal_id])
         @dish = Dish.new 
     end
     def create 
-
-        # @meal = Meal.find_by_id(params[:meal_id])
-        # @dish = @meal.build_dish(dish_params)
         @dish = Dish.find_or_create_by(dish_name: dish_params[:dish_name])
             @dish.meals << @meal
-
-        # binding.pry
-
         if @dish.save && @meal.save
-            # binding.pry
             redirect_to meal_dishes_path(@meal)
         else
             flash[:error] = @dish.errors.full_messages
@@ -33,7 +24,6 @@ class DishesController < ApplicationController
             flash[:error] = @dish.errors.full_messages
             redirect_to meals_path
         end
-        # binding.pry
     end
     def update 
         if @dish.update(dish_params)
@@ -44,11 +34,8 @@ class DishesController < ApplicationController
         end
     end
     def destroy 
-        # @meals = @dish.meals
         @dish.destroy 
         flash[:notice] = "Your dish has been detroyed"
-
-        # binding.pry
         redirect_to meals_path
     end
 

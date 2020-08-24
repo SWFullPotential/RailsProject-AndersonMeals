@@ -1,12 +1,9 @@
 <h1>Add a dish for <%= @meal.day_name %>, <%= @meal.meal_time %></h1>
 
-
 <%= form_for ([@meal, @dish]) do |f| %>
-
 
     Select from existing dishes:
     <%= collection_select(:dish, :dish_name, Dish.all, :dish_name, :dish_name, include_blank: true) %><br>
-
     <%= f.submit %> 
 <% end %>
 
@@ -16,7 +13,5 @@
     Create new dish 
     <%= f.label :dish_name %>: 
     <%= f.text_field :dish_name, placeholder:"Omlettes"%><br>
-     <%= f.submit %>
-<%#Partial won't work here. %>
-
+    <%= f.submit %>
 <% end %>

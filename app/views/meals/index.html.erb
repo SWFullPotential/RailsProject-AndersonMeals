@@ -1,35 +1,27 @@
 <%= form_tag(meals_path, method: "get") do %>
   <%= text_field_tag :term, nil,  id: "Search", placeholder: "Search by day" %>
-
   <%= submit_tag "Search"%>
 <% end %>
 
-
-
 <h1 class="w3-jumbo"><span class="w3-hide-small">All Meals</span></h1>
-
-
 <table id="meals">
-
-  <tr>
-    <th>Day</th>
-    <th>Meal</th>
-    <th>Dish</th>
-    <th>View Your Meal</th>
-  </tr>
-<% @meals.each do |m| %>
-  <tr>
-
-      <% m.id %>
-      <td><%= m.day_name %></td>
-      <td><%= m.meal_time %></td>
-      <td><%= m.display_dish %></td>
-      <% if current_user.id == m.user_id %>
+    <tr>
+      <th>Day</th>
+      <th>Meal</th>
+      <th>Dish</th>
+      <th>View Your Meal</th>
+    </tr>
+  <% @meals.each do |m| %>
+    <tr>
+        <% m.id %>
+        <td><%= m.day_name %></td>
+        <td><%= m.meal_time %></td>
+        <td><%= m.display_dish %></td>
+        <% if current_user.id == m.user_id %>
           <td><%= link_to "View", meal_path(m.id) %></td>
-      <% end %>
-  </tr>
-
-<% end %>
+        <% end %>
+    </tr>
+  <% end %>
 </table>
 <br>
 <%= link_to "All My Dishes", dishes_path %> <br>
