@@ -10,7 +10,6 @@ module MealsHelper
                 link_to "Add Dish", new_meal_dish_path(meal)
             end 
         end
-
     end
 
 end
