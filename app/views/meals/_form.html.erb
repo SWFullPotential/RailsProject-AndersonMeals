@@ -9,7 +9,7 @@
 
         <%= f.fields_for :dish, @dish do |d| %>
             Create New Dish: 
-            <%= d.text_field :dish_name, include_blank: true %>
+            <%= d.text_field :dish_name, value: "" %>
         
          <% end %>
 
