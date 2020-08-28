@@ -8,6 +8,8 @@ class Meal < ApplicationRecord
 
     scope :days, -> { where.not(day_name: nil) }
     scope :search, -> (term) { self.days.where("day_name LIKE ?", "%#{term}") }
+    scope :breakfast, -> { self.where(meal_time: "Breakfast")}
+
 
     def unique_day
       meal = Meal.find_by(day_name: self.day_name, meal_time: self.meal_time)
