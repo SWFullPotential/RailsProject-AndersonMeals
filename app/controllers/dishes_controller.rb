@@ -1,9 +1,12 @@
 class DishesController < ApplicationController
     before_action :set_dish, only: [:show, :edit, :update, :destroy]
     before_action :set_meal, only: [:new, :create]
+    helper_method :params
     def index 
         if params[:dish_term]
             @dishes = Dish.dish_search(params[:dish_term])
+        elsif !params[:dish].blank?
+            @dishes = Dish.where(dish_name: params[:dish_name])
         else
             @dishes = Dish.all
         end
@@ -46,7 +49,7 @@ class DishesController < ApplicationController
     private 
 
     def dish_params 
-        params.require(:dish).permit(:dish_name)
+        params.require(:dish).permit(:dish_name, :id)
     end
     def set_dish 
         @dish = Dish.find_by(id: params[:id])

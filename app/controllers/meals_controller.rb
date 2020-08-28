@@ -1,6 +1,5 @@
 class MealsController < ApplicationController
     before_action :set_meal, only: [:show, :edit, :update, :destroy]
-
     def index 
         if params[:term]
             @meals = Meal.search(params[:term])
@@ -49,6 +48,7 @@ class MealsController < ApplicationController
 
     private 
     def meal_params
+        
         params.require(:meal).permit(:day_name, :meal_time, :user_id, :dish_id, dish_attributes:[:dish_name])
     end
 

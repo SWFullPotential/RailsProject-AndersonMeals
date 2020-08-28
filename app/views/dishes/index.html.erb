@@ -5,6 +5,13 @@
 <%= submit_tag "Search" %>
 <% end %>
 
+<h3>FILTER: </h3>
+<%= form_tag(dishes_path method: "get") do %>
+<%= select_tag("dish[dish_id]"), options_from_collection_for_select(@dish, "id", "dish_name"), include_blank:true %>
+<%# binding.pry%>
+<%= submit_tag "Filter Dish"%>
+<% end %>
+
 <table id="meals">
         <tr>
             <th>Dish</th>
