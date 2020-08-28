@@ -4,5 +4,5 @@ class Dish < ApplicationRecord
 
 
     scope :dish_present, -> { where.not(dish_name: nil)}
-    scope :dish_search, -> (term) { self.dish_present.where("dish_name LIKE ?", "%#{term}%") }
+    scope :dish_search, -> (dish_term) { self.dish_present.where("dish_name LIKE ?", "%#{dish_term}%") }
 end

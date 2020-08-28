@@ -4,6 +4,9 @@ class MealsController < ApplicationController
     def index 
         if params[:term]
             @meals = Meal.search(params[:term])
+        elsif params[:dish_term]
+            dish = Dish.dish_search(params[:dish_term])
+            @meals = dish.map {|m| m.meals}.flatten
         else
             @meals = Meal.all
         end

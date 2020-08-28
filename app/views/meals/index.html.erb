@@ -2,6 +2,11 @@
   <%= text_field_tag :term, nil,  id: "Search", placeholder: "Search by day" %>
   <%= submit_tag "Search"%>
 <% end %>
+<br>
+<%= form_tag(meals_path, method: 'get') do %>
+<%= text_field_tag :dish_term, nil, id: "Search", placeholder: "Search by Dish Name" %>
+<%= submit_tag "Search" %>
+<% end %>
 
 <h1 class="w3-jumbo"><span class="w3-hide-small">All Meals</span></h1>
 <table id="meals">
