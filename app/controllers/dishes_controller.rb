@@ -2,7 +2,11 @@ class DishesController < ApplicationController
     before_action :set_dish, only: [:show, :edit, :update, :destroy]
     before_action :set_meal, only: [:new, :create]
     def index 
-        @dishes = Dish.all
+        if params[:term]
+            @dishes = Dish.dish_search(params[:term])
+        else
+            @dishes = Dish.all
+        end
     end
     def new 
         @dish = Dish.new 
